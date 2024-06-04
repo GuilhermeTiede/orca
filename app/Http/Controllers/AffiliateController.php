@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Affiliate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Panel\Registration\AfiliatesRequest;
 
 class AffiliateController extends Controller
 {
     public function index()
     {
-        return Affiliate::all(); // Retorna diretamente a coleção
+        return Inertia::render('Registration/Affiliates/Edit', [
+            'affiliates' => Affiliate::all()
+        ]);
     }
 
     public function show(Affiliate $affiliate)
@@ -17,17 +22,24 @@ class AffiliateController extends Controller
         return $affiliate; // Usa route model binding para buscar o afiliado
     }
 
-    public function store(Request $request)
+    public function store(AfiliatesRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255', // Traduzido e adicionado validações
-            'comission' => 'required|numeric', // Traduzido e tipo numérico
-            'document' => 'nullable|string|max:255',
-            'bank_data' => 'nullable|string',
-            'afiliated_observation' => 'nullable|string',
-        ]);
+        try {
+            DB::transaction(function () use ($request) {
+                $data = $request->validated();
 
-        return Affiliate::create($validatedData); // Cria o afiliado e retorna
+                $data['address'] = json_encode($data['address']);
+
+                Affiliate::create($data);
+            });
+        } catch (\Throwable $e) {
+            dd($e);
+
+            return redirect()
+                ->back()
+                ->with('error', $e->getMessage());
+        }
+
     }
 
     public function update(Request $request, Affiliate $affiliate)

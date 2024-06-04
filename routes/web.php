@@ -29,14 +29,17 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // Rotas públicas
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/register', function () {
+    return Inertia::render('Auth/Register');
+})->name('register');
+
+Route::get('/login', function () {
+    return Inertia::render('Auth/Login');
+})->name('login');
+
+Route::get('/logout', function () {
+    return Inertia::render('/');
+})->name('logout');
 
 // Rotas autenticadas
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -44,38 +47,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::apiResources([
-        'affiliates' => AffiliateController::class,
-        'budgets' => BudgetController::class,
-        'budget-passengers' => BudgetPassengerController::class,
-        'budget-services' => BudgetServiceController::class,
-        'budget-tours' => BudgetTourController::class,
-        'currencies' => CurrencyController::class,
-        'customers' => CustomerController::class,
-        'employees' => EmployeeController::class,
-        'operators' => OperatorController::class,
-        'operator-tours' => OperatorTourController::class,
-        'passengers' => PassengerController::class,
-        'payments' => PaymentController::class,
-        'positions' => PositionController::class,
-        'professionals' => ProfessionalController::class,
-        'providers' => ProviderController::class,
-        'schedules' => ScheduleController::class,
-        'schedule-reviews' => ScheduleReviewController::class,
-        'services' => ServiceController::class,
-        'statuses' => StatusController::class,
-        'tour-prices' => TourPriceController::class,
-        'tours' => TourController::class,
-        'transfers' => TransferController::class,
-        'units' => UnitController::class,
-        'vehicles' => VehicleController::class,
-    ]);
-
-    // Rotas Renderização
-    Route::get('/panel/home/affiliates', function () {
-        return Inertia::render('Home/Afiliados');
-    })->name('affiliates');
-
     Route::get('/budgets/{budget}/complete', [BudgetController::class, 'showCompleteBudget']);
     Route::get('/budgets/{budget}/calculate-final-price', [BudgetController::class, 'calculateFinalPrice']);
+
+    Route::resource('affiliates', AffiliateController::class);
+
 });

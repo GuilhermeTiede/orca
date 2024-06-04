@@ -30,7 +30,7 @@ const Aside = () => {
                         </li>
 
                         <li>
-                            <Link href={route('affiliates')} className="active">
+                            <Link href={route('affiliates.index')} className="active">
                                 <span className="ico">
                                     <img src={iconCadastro} alt="Ícone Cadastro"/>
                                 </span>
