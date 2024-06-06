@@ -17,6 +17,7 @@ use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\RateLimiter;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use PhpParser\Node\Stmt\For_;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -28,7 +29,9 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(LogoutResponse::class, new class () implements LogoutResponse {
             public function toResponse($request)
             {
-                return redirect('/');
+                return $request->wantsJson()
+                ? response()->json(['message' => 'Logout successful'], 200)
+                : redirect(Fortify::redirects('logout', '/'));
             }
         });
     }
@@ -42,6 +45,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        
 
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
@@ -50,6 +54,10 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('two-factor', function (Request $request) {
+            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+
+        RateLimiter::for('logout', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
         // Views de Autenticação
