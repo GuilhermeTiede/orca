@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
+use App\Http\Requests\Panel\Registration\AfiliatesRequest;
 use App\Models\Affiliate;
+use App\Resources\Laratables\Registration\Affiliate as LaratablesAffiliate;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\Panel\Registration\AfiliatesRequest;
+use Inertia\Inertia;
 
 class AffiliateController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Registration/Affiliates/Edit', [
+        if (request()->expectsJson()) {
+            return Laratables::recordsOf(Affiliate::class, LaratablesAffiliate::class);
+        }
+        return Inertia::render('Registration/Affiliates/List', [
             'affiliates' => Affiliate::all()
         ]);
     }
 
     public function show(Affiliate $affiliate)
     {
-        return $affiliate; // Usa route model binding para buscar o afiliado
+        return $affiliate;
     }
 
     public function store(AfiliatesRequest $request)
@@ -39,7 +44,14 @@ class AffiliateController extends Controller
                 ->back()
                 ->with('error', $e->getMessage());
         }
+    }
 
+    public function create()
+    {
+        return Inertia::render('Registration/Affiliates/Edit', [
+            'affiliate' => new Affiliate(),
+            'isReadOnly' => false,
+        ]);
     }
 
     public function update(Request $request, Affiliate $affiliate)

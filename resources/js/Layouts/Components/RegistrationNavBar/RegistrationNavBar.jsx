@@ -1,10 +1,60 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Inertia } from '@inertiajs/inertia';
+import { usePage } from '@inertiajs/react';
+
 const RegistrationNavBar = () => {
     const [activeTab, setActiveTab] = useState('afiliados');
+    const { url } = usePage();
+
+    useEffect(() => {
+        const path = url.split('/')[1];
+        setActiveTab(path || 'afiliados');
+    }, [url]);
+
     const handleTabClick = (tabName) => {
-        setActiveTab(tabName);
-      };
+      setActiveTab(tabName);
+      let route = '';
+      switch (tabName) {
+          case 'afiliados':
+              route = '/affiliates';
+              break;
+          case 'cargo':
+              route = '/positions';
+              break;
+          case 'cliente':
+              route = '/customers';
+              break;
+          case 'colaborador':
+              route = '/employees';
+              break;
+          case 'operador':
+              route = '/operators';
+              break;
+          case 'passeio':
+              route = '/tours';
+              break;
+          case 'prestador':
+              route = '/providers';
+              break;
+          case 'profissional':
+              route = '/professionals';
+              break;
+          case 'veiculos':
+              route = '/vehicles';
+              break;
+          case 'servico':
+              route = '/services';
+              break;
+          case 'parque':
+              route = '/parks';
+              break;
+          default:
+              route = '/';
+              break;
+      }
+      Inertia.visit(route);
+  };
     
 return (
     <div>
@@ -28,7 +78,7 @@ return (
 
       {/* Conteúdo condicional para cada perfil */}
       {activeTab === 'afiliados' && <div></div>}
-      {activeTab === 'cargo' && <div>Conteúdo de Cargo</div>}
+      {activeTab === 'cargo' && <div></div>}
       {/* ... (outros conteúdos) */}
     </div>
 );

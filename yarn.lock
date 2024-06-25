@@ -1189,7 +1189,7 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.9", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.9", "@babel/runtime@^7.24.7", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.7":
   version "7.24.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.24.7.tgz#f4f0d5530e8dbdf59b3451b9b3e594b6ba082e12"
   integrity sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==
@@ -1574,12 +1574,31 @@
     nprogress "^0.2.0"
     qs "^6.9.0"
 
-"@inertiajs/react@^1.0.15":
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/@inertiajs/react/-/react-1.0.15.tgz#f44deb52362a2841ceafe10bd51b1c66fe7cf620"
-  integrity sha512-T+eDD8Yz5FZ3Qbd0xKXbfRNSrZAQP6o2+jKv7Jakyzjr8ZLdcIpXmevqlGGo5Tc3/ZLzHAX4+2fzpyEKtfonng==
+"@inertiajs/core@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-1.2.0.tgz#3cdc88bc17c20eefdae99a778eac7be1ead9b14b"
+  integrity sha512-6U0gqCPbGGGMcLoDm+ckKipc5gptZMmfVFfPGdO7vlO7yipWf1RD+TKkcZGJklFvfgFMKwK2VPw8GAv1OctuQA==
   dependencies:
-    "@inertiajs/core" "1.0.15"
+    axios "^1.6.0"
+    deepmerge "^4.0.0"
+    nprogress "^0.2.0"
+    qs "^6.9.0"
+
+"@inertiajs/inertia@^0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@inertiajs/inertia/-/inertia-0.11.1.tgz#f324f09a03e1dd944404bd09935c0141a4b3a85d"
+  integrity sha512-btmV53c54oW4Z9XF0YyTdIUnM7ue0ONy3/KJOz6J1C5CYIwimiKfDMpz8ZbGJuxS+SPdOlNsqj2ZhlHslpJRZg==
+  dependencies:
+    axios "^0.21.1"
+    deepmerge "^4.0.0"
+    qs "^6.9.0"
+
+"@inertiajs/react@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@inertiajs/react/-/react-1.2.0.tgz#73af92a1fab7aa10968ee818140f46bb3061d904"
+  integrity sha512-Q3wTaQJdoUbUB8YIGeQ0y2Tf/k8dNtz9Nu2dYr1pbYUBv++6d45iC/CFB/lIpqVvvUw8XuIai2bdsUcRSIbPCQ==
+  dependencies:
+    "@inertiajs/core" "1.2.0"
     lodash.isequal "^4.5.0"
 
 "@inertiajs/vue3@^1.0.14":
@@ -1738,6 +1757,18 @@
     "@types/prop-types" "^15.7.11"
     prop-types "^15.8.1"
     react-is "^18.2.0"
+
+"@mui/x-data-grid@^7.7.0":
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/@mui/x-data-grid/-/x-data-grid-7.7.0.tgz#4b417de6f85e888b953d5d4f4bb7abfabed62717"
+  integrity sha512-s3Oii9EKcYPnL7M4g5evNley/J0slLL6xWRi0VwYqTHPGntBAMntUktMZ63bD/xko99f5ZcFoRBYTc55+mJ+AQ==
+  dependencies:
+    "@babel/runtime" "^7.24.7"
+    "@mui/system" "^5.15.15"
+    "@mui/utils" "^5.15.14"
+    clsx "^2.1.1"
+    prop-types "^15.8.1"
+    reselect "^4.1.8"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2548,6 +2579,13 @@ autoprefixer@^10.4.0, autoprefixer@^10.4.16:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
+axios@^0.21.1:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+  dependencies:
+    follow-redirects "^1.14.0"
+
 axios@^1.6.0, axios@^1.6.4:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.8.tgz#66d294951f5d988a00e87a0ffb955316a619ea66"
@@ -2951,7 +2989,7 @@ clone-deep@^4.0.1:
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
 
-clsx@^2.1.0:
+clsx@^2.1.0, clsx@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
   integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
@@ -3952,7 +3990,7 @@ flux@^4.0.1:
     fbemitter "^3.0.0"
     fbjs "^3.0.1"
 
-follow-redirects@^1.0.0, follow-redirects@^1.15.6:
+follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
@@ -5778,7 +5816,7 @@ qs@6.11.0:
   dependencies:
     side-channel "^1.0.4"
 
-qs@^6.11.2:
+qs@^6.11.2, qs@^6.12.1:
   version "6.12.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.12.1.tgz#39422111ca7cbdb70425541cba20c7d7b216599a"
   integrity sha512-zWmv4RSuB9r2mYQw3zxQuHWeU+42aKi1wWig/j4ele4ygELZ7PEO6MM7rim9oAQH2A5MWfsAVf/jPvTPgCbvUQ==
@@ -6049,6 +6087,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
+
+reselect@^4.1.8:
+  version "4.1.8"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.1.8.tgz#3f5dc671ea168dccdeb3e141236f69f02eaec524"
+  integrity sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==
 
 resolve-cwd@^3.0.0:
   version "3.0.0"

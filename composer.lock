@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66dff87de17538902d6e9b1159caa831",
+    "content-hash": "638a3a4d9bcdee47a9e45a1bcd64eb4e",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -604,6 +604,56 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "freshbitsweb/laratables",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/freshbitsweb/laratables.git",
+                "reference": "309c6e7fbe20fc0052657cc7016de9247c4f506b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/freshbitsweb/laratables/zipball/309c6e7fbe20fc0052657cc7016de9247c4f506b",
+                "reference": "309c6e7fbe20fc0052657cc7016de9247c4f506b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Freshbitsweb\\Laratables\\LaratablesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Freshbitsweb\\Laratables\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gaurav Makhecha",
+                    "email": "info@freshbits.in"
+                }
+            ],
+            "description": "Ajax support of DataTables for Laravel 5.5+",
+            "support": {
+                "issues": "https://github.com/freshbitsweb/laratables/issues",
+                "source": "https://github.com/freshbitsweb/laratables/tree/v1.0.7"
+            },
+            "time": "2018-09-01T14:44:20+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -1223,6 +1273,66 @@
                 }
             ],
             "time": "2024-03-09T00:30:58+00:00"
+        },
+        {
+            "name": "laravel/breeze",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "438424c11583576bbf3897dda505d2565e53c9bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/438424c11583576bbf3897dda505d2565e53c9bd",
+                "reference": "438424c11583576bbf3897dda505d2565e53c9bd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^11.0",
+                "illuminate/filesystem": "^11.0",
+                "illuminate/support": "^11.0",
+                "illuminate/validation": "^11.0",
+                "php": "^8.2.0",
+                "symfony/console": "^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2024-06-06T14:18:45+00:00"
         },
         {
             "name": "laravel/fortify",

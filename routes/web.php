@@ -30,18 +30,8 @@ use App\Http\Controllers\Budget\BudgetServiceController;
 use App\Http\Controllers\Budget\BudgetPassengerController;
 use App\Http\Controllers\Schedule\ScheduleReviewController;
 
-// Rotas públicas
-Route::get('/register', function () {
-    return Inertia::render('Auth/Register');
-})->name('register');
-
-Route::get('/login', function () {
-    return Inertia::render('Auth/Login');
-})->name('login');
-
-
 // Rotas autenticadas
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/panel/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
@@ -50,6 +40,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/budgets/{budget}/calculate-final-price', [BudgetController::class, 'calculateFinalPrice']);
 
     Route::resource('affiliates', AffiliateController::class);
-
-    Route::post('/logout', [LogoutController::class, 'destroy']);
+    Route::resource('positions', PositionController::class);
+    Route::resource('customers', CustomerController::class);
 });
